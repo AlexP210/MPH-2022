@@ -5,5 +5,5 @@ reddit = praw.Reddit(
     user_agent="windows:Crawler2:V1(by u/watercress97)"
 )
 print(reddit.read_only)
-for submission in reddit.subreddit("gonewild").hot(limit=10):
+for submission in reddit.subreddit("itookapicture").hot(limit=10):
     print(submission.title)
