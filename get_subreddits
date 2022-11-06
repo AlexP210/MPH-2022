@@ -1,3 +1,5 @@
+# Compiles a list of subreddits and exports to subreddits_list.txt
+
 from wsgiref.util import request_uri
 import praw
 import wget
@@ -18,7 +20,7 @@ for i in topics:
     for j in sbrs:
         if j not in all_sbrs:
             all_sbrs.append(j)
-            all_sbrs_title.append(j.title.split('/')[-1])
+            all_sbrs_title.append(j.display_name.split('/')[-1])
 
 
 f = open("subreddits_list.txt", "w")
@@ -30,8 +32,3 @@ for i in range(len(all_sbrs_title)):
     except Exception as e:
         print('missed one')
 f.close()
-
-f = open("subreddits_list.txt", "r")
-lines = f.readlines()
-for i in lines:
-    print(reddit.subreddit(i))
